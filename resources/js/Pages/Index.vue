@@ -1,5 +1,6 @@
 <script setup>
   import Authenticated from '@/Layouts/AuthenticatedLayout.vue'
+  import { Inertia } from '@inertiajs/inertia';
   import {useForm} from '@inertiajs/inertia-vue3'
 
   const {notes} = defineProps({
@@ -10,6 +11,12 @@
     word: '',
     description: '',
   })
+
+  const destroy = ({id}) => {
+      Inertia.delete(route('note.destroy', {id: id}), {
+      onBefore: () => confirm('delete?')
+    })
+  }
 </script>
 <template>
   <Authenticated>
@@ -30,8 +37,9 @@
       <h1>List</h1>
       <div v-for="note in notes">
         <div>
-          <h3>{{ note.word }}</h3>
+          <h2>{{ note.word }}</h2>
           <p>{{ note.description }}</p>
+          <button class="px-3 bg-red-200 hover:bg-red-400 rounded-md" @click="destroy(note)">destroy</button>
         </div>
       </div>
     </div>

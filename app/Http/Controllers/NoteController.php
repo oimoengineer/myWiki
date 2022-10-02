@@ -21,4 +21,10 @@ class NoteController extends Controller
         $note->fill($input)->save();
         return Redirect::route('note.index');
     }
+
+    public function destroy(Note $note)
+    {
+        $note->delete();
+        return Redirect::route("note.index");
+    }
 }
