@@ -39,7 +39,7 @@
         <div>
           <h2>{{ note.word }}</h2>
           <p>{{ note.description }}</p>
-          <button class="px-3 bg-red-200 hover:bg-red-400 rounded-md" @click="destroy(note)">destroy</button>
+          <button class="px-2 bg-red-200 hover:bg-red-400 rounded-md" @click="destroy(note)">destroy</button>
         </div>
       </div>
     </div>
