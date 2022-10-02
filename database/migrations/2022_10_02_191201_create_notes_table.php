@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('body', 5000);
+            $table->string('word', 100);
+            $table->string('description', 5000);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
