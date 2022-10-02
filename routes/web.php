@@ -15,8 +15,8 @@ use App\Http\Controllers\NoteController;
 |
 */
 
-Route::get('/', [NoteController::class, 'index']);
-Route::post('/', [NoteController::class, 'store']);
+Route::get('/', [NoteController::class, 'index'])->name('note.index');
+Route::post('/', [NoteController::class, 'store'])->name('note.store');
 
 
 // Route::get('/', function () {

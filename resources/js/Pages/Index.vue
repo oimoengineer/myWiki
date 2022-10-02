@@ -1,8 +1,14 @@
 <script setup>
   import Authenticated from '@/Layouts/AuthenticatedLayout.vue'
+  import {useForm} from '@inertiajs/inertia-vue3'
 
   const {notes} = defineProps({
     notes: Array
+  })
+  
+  const form = useForm({
+    word: '',
+    description: '',
   })
 </script>
 <template>
@@ -10,17 +16,20 @@
     <div>
       <h1>MyWiki</h1>
     </div>
-    <form action="/" method="POST">
-      <label>word</label><br>
-      <input type="text" name="note[word]"><br>
-      <label>description</label><br>
-      <textarea type="text" name="note[description]"></textarea><br>
-      <button>create</button>
+    <form @submit.prevent="form.post(route('note.store'))">
+      <label>word</label>
+      <input type="text" id="word" v-model="form.word" class="w-full">
+      <div v-if="form.errors.word" class="text-red-700">{{ form.errors.word }}</div>
+      <label>description</label>
+      <textarea type="text" id="description" v-model="form.description" class="w-full"></textarea>
+      <div v-if="form.errors.description" class="text-red-700">{{ form.errors.description }}</div>
+      <button class="border-2 border-grey-200 bg-cyan-300 px-2" type="submit" :disabled="form.processing">create</button>
     </form>
     <div>
+      <br>
       <h1>List</h1>
-      <div>
-        <div v-for="note in notes">
+      <div v-for="note in notes">
+        <div>
           <h3>{{ note.word }}</h3>
           <p>{{ note.description }}</p>
         </div>
