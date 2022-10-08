@@ -10,6 +10,7 @@
   const form = useForm({
     word: '',
     description: '',
+    url: '',
   })
 
   const destroy = ({id}) => {
@@ -30,7 +31,10 @@
       <label>description</label>
       <textarea type="text" id="description" v-model="form.description" class="w-full"></textarea>
       <div v-if="form.errors.description" class="text-red-700">{{ form.errors.description }}</div>
-      <button class="border-2 border-grey-200 bg-cyan-300 px-2" type="submit" :disabled="form.processing">create</button>
+      <label>URL</label>
+      <input type="text" id="url" v-model="form.url" class="w-full">
+      <div v-if="form.errors.url" class="text-red-700">{{ form.errors.url }}</div>
+      <button class="border-2 border-grey-200 bg-cyan-300 px-2 mt-3" type="submit" :disabled="form.processing">create</button>
     </form>
     <div>
       <br>
@@ -39,7 +43,8 @@
         <div>
           <h2>{{ note.word }}</h2>
           <p>{{ note.description }}</p>
-          <button class="px-2 bg-red-200 hover:bg-red-400 rounded-md" @click="destroy(note)">destroy</button>
+          <a :href="note.URL">{{ note.URL }}</a><br>
+          <button class="px-2 mt-3 bg-red-200 hover:bg-red-400 rounded-md" @click="destroy(note)">destroy</button>
         </div>
       </div>
     </div>
