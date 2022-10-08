@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('word', 100);
             $table->string('description', 5000);
+            $table->string('URL', 100);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
