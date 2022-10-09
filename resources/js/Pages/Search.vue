@@ -25,22 +25,14 @@
       <h1>MyWiki</h1>
     </div>
     <form @submit.prevent="form.post(route('note.store'))">
-      <label>word</label>
-      <input type="text" id="word" v-model="form.word" class="w-full">
+      <label>keyword</label>
+      <input type="text" id="tag" v-model="form.word" class="w-full">
       <div v-if="form.errors.word" class="text-red-700">{{ form.errors.word }}</div>
-      <label>description</label>
-      <textarea type="text" id="description" v-model="form.description" class="w-full"></textarea>
-      <div v-if="form.errors.description" class="text-red-700">{{ form.errors.description }}</div>
-      <label>URL</label>
-      <input type="text" id="url" v-model="form.url" class="w-full">
-      <label>tags</label>
-      <input type="text" id="tag" >
-      <div v-if="form.errors.url" class="text-red-700">{{ form.errors.url }}</div>
-      <button class="border-2 border-grey-200 bg-cyan-300 px-2 mt-3" type="submit" :disabled="form.processing">create</button>
+      <button class="border-2 border-grey-200 bg-cyan-300 px-2 mt-3" type="submit" :disabled="form.processing">search</button>
     </form>
     <div>
       <br>
-      <h1>List</h1>
+      <h1>Result</h1>
       <div v-for="note in notes">
         <div>
           <h2>{{ note.word }}</h2>

@@ -15,6 +15,11 @@ class NoteController extends Controller
         return inertia('Index', ['notes' => $note->get()]);
     }
 
+    public function search(Note $note)
+    {
+        return inertia('Search', ['notes' => $note->get()]);
+    }
+
     public function store(NoteRequest $request, Note $note)
     {
         $input = $request->all();

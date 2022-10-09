@@ -16,6 +16,7 @@ use App\Http\Controllers\NoteController;
 */
 
 Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
+Route::get('/notes/search', [NoteController::class, 'search'])->name('note.search');
 Route::post('/notes', [NoteController::class, 'store'])->name('note.store');
 Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('note.destroy');
 
