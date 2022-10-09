@@ -24,5 +24,5 @@ show result on the same page(Index.vue)
 ## deploy
 - refactaring
 - add comments
-- deploy by heroku
+- deploy by heroku DONE
 - write the readme
